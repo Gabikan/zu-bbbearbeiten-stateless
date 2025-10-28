@@ -1,26 +1,23 @@
 from dataclasses import dataclass
+from datetime import datetime
 
 items = []
-
 
 @dataclass
 class Item:
     text: str
+    date: datetime = None
     isCompleted: bool = False
 
-
-def add(text):
+def add(text, date=None):
     text = text.replace('b', 'bbb').replace('B', 'Bbb')
-    items.append(Item(text))
-
+    items.append(Item(text, date))
 
 def get_all():
     return items
 
-
 def get(index):
     return items[index]
-
 
 def update(index):
     items[index].isCompleted = not items[index].isCompleted
